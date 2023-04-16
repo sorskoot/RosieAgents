@@ -1,0 +1,4 @@
+CREATE A SHORT POSITIVE COMMENT TO SHARE ON SOCIAL MEDIA.
+
+Create a positive comment on this:
+{{$input}}

@@ -1,0 +1,1 @@
+Create a short tweet about {{$input}}. Make sure it is fun and engaging.

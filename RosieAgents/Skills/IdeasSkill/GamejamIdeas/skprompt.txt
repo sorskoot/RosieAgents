@@ -1,0 +1,5 @@
+based on a gamejam theme {{$INPUT}},
+Create a list of exactly {{$numIdeas}} ideas for a VR games that are suitable to create in a very short time for a game jam.
+Create the game title and a short description.
+Represented as valid javascript json, 
+as an array of [{ "title": "the title", "description":"the short description" }]

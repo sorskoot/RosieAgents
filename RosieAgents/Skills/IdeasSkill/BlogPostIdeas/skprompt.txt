@@ -1,0 +1,5 @@
+based on the topic "{{$INPUT}}",
+Create a list of exactly {{$numIdeas}} ideas for a blog posts.
+Create the post title and a short description.
+Represented as valid javascript json, 
+as an array of [{ "title": "the title", "description":"the short description" }]

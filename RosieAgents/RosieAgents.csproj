@@ -20,6 +20,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
+    <None Update="Skills\IdeasSkill\BlogPostIdeas\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Skills\IdeasSkill\BlogPostIdeas\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Skills\IdeasSkill\GamejamIdeas\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

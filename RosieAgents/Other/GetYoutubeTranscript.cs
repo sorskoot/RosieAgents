@@ -6,7 +6,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using YoutubeTranscriptApi;
 
-namespace RosieAgents
+namespace RosieAgents.Other
 {
     public class GetYoutubeTranscript
     {

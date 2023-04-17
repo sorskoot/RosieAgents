@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.KernelExtensions;
 using Microsoft.SemanticKernel.Orchestration;
+using RosieAgents.SkillFunctions;
 
 namespace RosieAgents;
 
@@ -22,7 +23,7 @@ public class SkillFunctionBase
         string endPoint = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_ENDPOINT)!;
 
         this.Kernel = Microsoft.SemanticKernel.Kernel.Builder.Build();
-
+        
         this.Kernel.Config.AddAzureOpenAITextCompletionService("davinci", model, endPoint, apiKey);
     }
 

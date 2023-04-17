@@ -1,4 +1,10 @@
-CREATE A SHORT POSITIVE COMMENT TO SHARE ON SOCIAL MEDIA.
+Create a short, positive comment as a reply to the message on social media. Don't add hashtags or links.
 
-Create a positive comment on this:
+Message:
+In this video, Aaron is building an island with platforms at different heights and an underground space. He plans to use a rocket to get to the end of the quest line for Ad Astra, which requires a NASA workbench, a spacesuit filled with oxygen, and a rocket with fuel. He explains that there are three ways to get fuel for the rocket: fluid drill from Industrial Foregoing, Productive Bees, or a third way he found.
+Comment:
+That sounds like an awesome build! I'm looking forward to seeing the finished product.
+
+Message:
 {{$input}}
+Comment:

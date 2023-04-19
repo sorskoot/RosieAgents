@@ -1,0 +1,18 @@
+GIVEN A REGEX, EXPLAIN IT IN HUMAN LANGUAGE. EXPLAIN EVERY PIECE OF THE REGEX NUMBERED AND EACHT ON A SEPARATE LINE.
+ALSO GIVE AN EXAMPLE OF WHAT THE REGEX MIGHT BE USED FOR. GIVE THE ANSWER IN VALID MARKDOWN.
+
+++++++++
+Regex: /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/
+Explanation: This regex pattern checks if the given input is a valid email address following this general structure: username@domain.com.
+1. ^: Start of the string
+2. [\w-]+: At least one or more alphanumeric characters (letters, digits, underscores) or hyphens.
+3. (\.[\w-]+)*: An optional group, repeated zero or more times, containing a period followed by one or more alphanumeric characters or hyphens.
+4. @: The "@" symbol is mandatory for email addresses.
+5. [\w-]+: At least one or more alphanumeric characters (letters, digits, underscores) or hyphens after "@"
+6. (\.[\w-]+)+: A required group (appearing at least once) containing a period followed by one or more alphanumeric characters or hyphens.
+7. $: End of the string
+
+
+++++++++
+Regex: /^{{$INPUT}}
+Explanation: 

@@ -45,7 +45,7 @@ namespace RosieAgents.SkillFunctions
 
             var variables = new ContextVariables();
             variables.Set("url", requestedUrl);
-            variables.Set("length", "4000");
+            variables.Set("length", "2000");
 
             SKContext result = await Kernel.RunAsync(
                 variables,

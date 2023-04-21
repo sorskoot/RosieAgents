@@ -6,6 +6,8 @@ using Microsoft.SemanticKernel.Orchestration;
 using RosieAgents.CodeSkills;
 using System.Collections.Specialized;
 using System.Web;
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Memory;
 
 namespace RosieAgents.SkillFunctions
 {
@@ -32,6 +34,8 @@ namespace RosieAgents.SkillFunctions
         {
             var model = "code-davinci-002";
             InitKernel();
+
+            Kernel.UseMemory(new VolatileMemoryStore());
 
             IDictionary<string, ISKFunction> visionSkills = Kernel.ImportSkill(new VisionSkills());
             IDictionary<string, ISKFunction> CodeSkill = GetSemanticsSkill("CodeSkills");

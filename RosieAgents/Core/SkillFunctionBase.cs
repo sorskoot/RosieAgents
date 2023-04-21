@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.KernelExtensions;
+using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel.Orchestration;
 using RosieAgents.SkillFunctions;
 
@@ -13,34 +14,39 @@ public class SkillFunctionBase
 
     public SkillFunctionBase(ILoggerFactory loggerFactory)
     {
-        this.Logger = loggerFactory.CreateLogger<IdeasSkillFunction>();
+        Logger = loggerFactory.CreateLogger<IdeasSkillFunction>();
     }
 
-    protected void InitKernel(string? alternativeModel=null)
+    protected void InitKernel(string? alternativeModel = null)
     {
         string apiKey = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_API_KEY)!;
-        string model = alternativeModel??Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_DEPLOYMENT_NAME)!;
+        string model = alternativeModel ?? Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_DEPLOYMENT_NAME)!;
         string endPoint = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_ENDPOINT)!;
 
-        this.Kernel = Microsoft.SemanticKernel.Kernel.Builder.WithLogger(ConsoleLogger.Log).Build();
-
-        this.Kernel.Config.AddAzureOpenAITextCompletionService("gpt", model, endPoint, apiKey);
+        Kernel = Microsoft.SemanticKernel.Kernel.Builder
+            .WithLogger(ConsoleLogger.Log)
+            .Configure(c =>
+            {
+                c.AddAzureTextEmbeddingGenerationService("ada", "text-embedding-ada-002", endPoint, apiKey);
+                c.AddAzureTextCompletionService("gpt", model, endPoint, apiKey);
+            })
+            .WithMemoryStorage(new VolatileMemoryStore())
+            .Build();
     }
 
     protected IDictionary<string, ISKFunction> GetSemanticsSkill(string semanticsSkill)
     {
         string skillsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "skills");
-        return this.Kernel.ImportSemanticSkillFromDirectory(skillsDirectory, semanticsSkill);
+        return Kernel.ImportSemanticSkillFromDirectory(skillsDirectory, semanticsSkill);
     }
 }
 
 internal static class ConsoleLogger
 {
+    private static readonly Lazy<ILoggerFactory> s_loggerFactory = new(LogBuilder);
     internal static ILogger Log => LogFactory.CreateLogger<object>();
 
     private static ILoggerFactory LogFactory => s_loggerFactory.Value;
-
-    private static readonly Lazy<ILoggerFactory> s_loggerFactory = new(LogBuilder);
 
     private static ILoggerFactory LogBuilder()
     {

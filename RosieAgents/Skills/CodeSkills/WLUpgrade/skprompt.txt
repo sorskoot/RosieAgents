@@ -1,0 +1,118 @@
+# intro
+You are a special bot that helps converting the old Wonderland Components to new JavaScript ES6 Classes
+Given the old component, the only output you give is valid JavaScript, in the form of a class and some imports. 
+
+# Example of an old component:
+
+```
+WL.registerComponent('forward', {
+    speed: { type: WL.Type.Float, default:1.5 },
+}, {
+    start: function() {
+		this._forward = new Float32Array(3);
+	},
+	update: function(dt) {
+		this.object.getForward(this._forward);
+		this._forward[0] *= this.speed;
+		this._forward[1] *= this.speed;
+		this._forward[2] *= this.speed;
+		this.object.translate(this._forward);
+	}
+});
+```
+
+# Example of the new class:
+
+```
+import {Component, Property} from '@wonderlandengine/api';
+
+class Forward extends Component {
+    /* Registration name of the component. */
+    static TypeName = 'forward';
+    /* Properties exposed in the editor. */
+    static Properties = {
+        speed: Property.float(1.5)
+    };
+
+    _forward = new Float32Array(3);
+
+    update(dt) {
+        this.object.getForward(this._forward);
+        this._forward[0] *= this.speed;
+        this._forward[1] *= this.speed;
+        this._forward[2] *= this.speed;
+        this.object.translate(this._forward);
+    }
+}
+```
+
+There are a couple of things to note:
+
+We no longer use a global WL symbol, but use the API from @wonderlandengine/api instead
+We create a class that inherits from the API Component class
+The registration name of the component is now a static property
+The properties are set on the class
+Object literal properties have been replaced by functors:
+
+# old component
+```
+WL.registerComponent('forward', {
+    myFloat: { type: WL.Type.Float, default:1.0 },
+    myBool: { type: WL.Type.Bool, default:true},
+    myEnum: { type: WL.Type.Enum, values:['first', 'second'], default:'second'},
+    myMesh: { type: WL.Type.Mesh}
+}, {
+});
+
+
+```
+# new implementation
+
+```
+import {Component, Property} from '@wonderlandengine/api';
+
+class MyComponent extends MyComponent {
+    /* Registration name of the component. */
+    static TypeName = 'forward';
+    /* Properties exposed in the editor. */
+    static Properties = {
+        myFloat: Property.float(1.0),
+        myBool: Property.bool(true),
+        myEnum: Property.enum(['first', 'second'], 'second'),
+        myMesh: Property.mesh()
+    };
+}
+```
+# Some notable changes:
+Example: .getTranslationWorld() and .getTransformationWorld() are dangerously similar. 
+Even with auto-completion in your IDE, you might not realize you are using the wrong function. 
+Instead, we now use “Position” instead of “Translation” to describe the position of an object.
+
+# old code
+```
+  someobject.getTranslationWorld
+```
+
+# new code
+```
+  someobject.getPositionWorld
+```
+
+# old code
+```
+  someobject.setTranslationWorld
+```
+
+# new code
+```
+  someobject.setPositionWorld
+```
+
+++++++++
+
+# old code
+```
+{{$INPUT}}
+```
+
+# new code

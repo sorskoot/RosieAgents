@@ -1,8 +1,8 @@
 ﻿using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SkillDefinition;
 using Azure;
-using Azure.AI.Vision.Core.Input;
-using Azure.AI.Vision.Core.Options;
+using Azure.AI.Vision.Common.Input;
+using Azure.AI.Vision.Common.Options;
 using Azure.AI.Vision.ImageAnalysis;
 
 namespace RosieAgents.CodeSkills

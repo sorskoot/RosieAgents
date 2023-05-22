@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel.Orchestration;
-using Microsoft.SemanticKernel.SemanticFunctions.Partitioning;
 using Microsoft.SemanticKernel.SkillDefinition;
 using Microsoft.SemanticKernel.Skills.Web;
+using Microsoft.SemanticKernel.Text;
 
 namespace RosieAgents.apis
 {
@@ -183,15 +183,15 @@ BEGIN SUMMARY:
                     {
                         case ".md":
                         {
-                            lines = SemanticTextPartitioner.SplitMarkDownLines(code, MaxTokens);
-                            paragraphs = SemanticTextPartitioner.SplitMarkdownParagraphs(lines, MaxTokens);
+                            lines = TextChunker.SplitMarkDownLines(code, MaxTokens);
+                            paragraphs = TextChunker.SplitMarkdownParagraphs(lines, MaxTokens);
 
                             break;
                         }
                         default:
                         {
-                            lines = SemanticTextPartitioner.SplitPlainTextLines(code, MaxTokens);
-                            paragraphs = SemanticTextPartitioner.SplitPlainTextParagraphs(lines, MaxTokens);
+                            lines = TextChunker.SplitPlainTextLines(code, MaxTokens);
+                            paragraphs = TextChunker.SplitPlainTextParagraphs(lines, MaxTokens);
 
                             break;
                         }

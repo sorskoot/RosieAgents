@@ -6,6 +6,7 @@ using Microsoft.SemanticKernel.Orchestration;
 using RosieAgents.CodeSkills;
 using System.Collections.Specialized;
 using System.Web;
+using Microsoft.SemanticKernel.SkillDefinition;
 
 namespace RosieAgents.SkillFunctions
 {

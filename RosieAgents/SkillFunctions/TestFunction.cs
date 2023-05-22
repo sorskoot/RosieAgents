@@ -4,11 +4,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.CoreSkills;
 using Microsoft.SemanticKernel.Memory;
-using Microsoft.SemanticKernel.SemanticFunctions.Partitioning;
+using Microsoft.SemanticKernel.Text;
 using System.Collections.Specialized;
 using System.Web;
-using Microsoft.SemanticKernel.Orchestration;
-using Microsoft.SemanticKernel.Skills.Web;
 
 namespace RosieAgents.SkillFunctions;
 
@@ -57,8 +55,8 @@ public class TestFunction : SkillFunctionBase
         List<string> lines;
         List<string> paragraphs;
 
-        lines = SemanticTextPartitioner.SplitMarkDownLines(Data.Text, MaxTokens);
-        paragraphs = SemanticTextPartitioner.SplitMarkdownParagraphs(lines, MaxTokens);
+        lines = TextChunker.SplitMarkDownLines(Data.Text, MaxTokens);
+        paragraphs = TextChunker.SplitMarkdownParagraphs(lines, MaxTokens);
 
         for (int i = 0; i < paragraphs.Count; i++)
         {

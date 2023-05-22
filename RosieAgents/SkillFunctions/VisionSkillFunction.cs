@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Web;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Memory;
+using Microsoft.SemanticKernel.SkillDefinition;
 
 namespace RosieAgents.SkillFunctions
 {

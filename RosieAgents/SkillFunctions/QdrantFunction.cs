@@ -6,12 +6,8 @@ using System.Web;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.Memory.Qdrant;
-using Microsoft.SemanticKernel.SemanticFunctions.Partitioning;
-using Google.Protobuf.Collections;
-
 
 namespace RosieAgents.SkillFunctions
 {

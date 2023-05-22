@@ -1,8 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.KernelExtensions;
 using Microsoft.SemanticKernel.Memory;
-using Microsoft.SemanticKernel.Orchestration;
+using Microsoft.SemanticKernel.SkillDefinition;
 using RosieAgents.SkillFunctions;
 
 namespace RosieAgents;
@@ -22,13 +21,15 @@ public class SkillFunctionBase
         string apiKey = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_API_KEY)!;
         string model = alternativeModel ?? Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_DEPLOYMENT_NAME)!;
         string endPoint = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_ENDPOINT)!;
+        string chatModel = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_CHATMODEL)!;
 
         Kernel = Microsoft.SemanticKernel.Kernel.Builder
             .WithLogger(ConsoleLogger.Log)
             .Configure(c =>
             {
-                c.AddAzureTextEmbeddingGenerationService("ada", "text-embedding-ada-002", endPoint, apiKey);
-                c.AddAzureTextCompletionService("gpt", model, endPoint, apiKey);
+                c.AddAzureTextEmbeddingGenerationService("text-embedding-ada-002", endPoint, apiKey);
+                c.AddAzureTextCompletionService(model, endPoint, apiKey);
+                c.AddAzureChatCompletionService(chatModel, endPoint, apiKey);
             })
             .WithMemoryStorage(new VolatileMemoryStore())
             .Build();

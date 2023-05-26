@@ -31,6 +31,7 @@ namespace RosieAgents.SkillFunctions
 
             string requestedInput = queryDictionary["input"] ?? string.Empty;
             string requestedSkill = queryDictionary["skill"] ?? string.Empty;
+            string requestedStyle = queryDictionary["style"] ?? "Casual";
             string requestedContentType = (queryDictionary["contenttype"] ?? "BLOGPOST").ToUpper();
 
             if (string.IsNullOrWhiteSpace(requestedSkill) || string.IsNullOrWhiteSpace(requestedInput))
@@ -48,13 +49,18 @@ namespace RosieAgents.SkillFunctions
                 return req.CreateResponse(HttpStatusCode.BadRequest);
             }
 
+            if (!styles.ContainsKey(requestedStyle))
+            {
+                return req.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
             var context = kernel.CreateNewContext();
             context["INPUT"] = requestedInput;
             context["CONTENTTYPE"] = requestedContentType;
 
             var result = await kernel.RunAsync(context.Variables, 
                 skill[requestedSkill],
-                styles["Fun"]);
+                styles[requestedStyle]);
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");

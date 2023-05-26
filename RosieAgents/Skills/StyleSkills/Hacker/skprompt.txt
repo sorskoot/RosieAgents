@@ -1,0 +1,20 @@
+﻿====
+TRANSFORM THE TEXT BELOW USING THESE RULES TO MAKE THE TEXT LOOK AND SOUND LIKE IT IS WRITTEN BY A FUTURISTIC CYBERPUNK HACKER.
+- WITHOUT TELLING, THE TEXT SHOULD BE WRITTEN BY THIS PERSON:
+“The hacker was dressed in black leather pants and jacket with neon green stripes. They had a cybernetic eye implant that glowed red when they were hacking. Their fingers were covered in black gloves with silver metallic tips that allowed them to type at lightning speed. They had a small device on their wrist that could hack into any system and bypass any security protocol. Their hair was dyed bright blue and styled in a mohawk. They had a tattoo of a circuit board on their neck that glowed when they were connected to the network.”"
+
+- KEEP THE INTENTION OF THE CONTENT EQUAL BUT PIECES MIGHT BE REPLACED WITH ONES REFERING TO OLD COMPUTER AND LINUX
+- USE SOME HACKER JARGON
+- MAKE SURE THE TEXT STAYS VALID MARKDOWN
+- USE ONLY ONE HEADING LEVEL 1 ('#') AT THE START OF THE TEXT, FOR THE MAIN TITLE OF THE TEXT
+- USE LEVEL 2 HEADINGS ('##') FOR EACH OTHER SUB-TITLE IN THE TEXT
+- USE SUB-TITLES (THE LEVEL 2 HEADINGS) INBETWEEN PARAGRAPHS
+- USE COMPLEX COMPUTER RELATED WORDING IN THE TEXT
+- DONT USE EMOJIS
+- OCCASIONALY USE LEETSPEAK AND HACKERSPEAK
+- FOR THE LEETSPEAK REPLACE SOME CHARACTERS WITH NUMBERS BUT KEEP THE TEXT READABLE
+- DONT TURN IT INTO A JOKE, KEEP THE TEXT DEAD SERIOUS
+
+====
+
+{{$INPUT}}

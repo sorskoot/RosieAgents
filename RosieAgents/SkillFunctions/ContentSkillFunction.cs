@@ -20,7 +20,7 @@ namespace RosieAgents.SkillFunctions
             string endPoint = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_ENDPOINT)!;
             string chatModel = Environment.GetEnvironmentVariable(Constants.AZURE_OPENAI_CHATMODEL)!;
 
-            // Note: we use Chat Completion and GPT 3.5 Turbo
+            
             kernel.Config.AddAzureChatCompletionService(chatModel, endPoint, apiKey);
             NameValueCollection queryDictionary = HttpUtility.ParseQueryString(req.Url.Query);
 
@@ -39,8 +39,9 @@ namespace RosieAgents.SkillFunctions
             }
 
 
-            string skillsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "skills");
+            string skillsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Skills");
             IDictionary<string, ISKFunction> skill = kernel.ImportSemanticSkillFromDirectory(skillsDirectory, "Content");
+            IDictionary<string, ISKFunction> styles = kernel.ImportSemanticSkillFromDirectory(skillsDirectory, "StyleSkills");
 
             if (!skill.ContainsKey(requestedSkill))
             {
@@ -51,7 +52,9 @@ namespace RosieAgents.SkillFunctions
             context["INPUT"] = requestedInput;
             context["CONTENTTYPE"] = requestedContentType;
 
-            var result = await kernel.RunAsync(context.Variables, skill[requestedSkill]);
+            var result = await kernel.RunAsync(context.Variables, 
+                skill[requestedSkill],
+                styles["Fun"]);
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");

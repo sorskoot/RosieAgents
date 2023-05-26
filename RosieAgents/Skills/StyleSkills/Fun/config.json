@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "description": "a function that turns a an outline into a blog post",
+  "description": "Change the visual style of a blog post to be more fun",
   "type": "completion",
   "completion": {
     "max_tokens": 16000,
@@ -13,7 +13,7 @@
     "parameters": [
       {
         "name": "input",
-        "description": "the outline to create into a blog post",
+        "description": "The blog post to change the style for",
         "defaultValue": ""
       }
     ]

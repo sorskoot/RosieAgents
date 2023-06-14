@@ -56,6 +56,12 @@
     <None Update="Skills\IdeasSkill\GamejamIdeas\skprompt.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Skills\SocialMediaSkill\LinkedinRecommendation\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Skills\SocialMediaSkill\LinkedinRecommendation\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Skills\SocialMediaSkill\LinkedinPost\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

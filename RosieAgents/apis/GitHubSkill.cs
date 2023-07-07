@@ -138,7 +138,7 @@ BEGIN SUMMARY:
                 var context1 = new SKContext(new ContextVariables(), NullMemory.Instance, null, context.Log);
                 context1.Variables.Set(Parameters.FilePath, filePath);
                 await this._downloadSkill.DownloadToFileAsync(
-                    $"{repositoryUri}/archive/refs/heads/{repositoryBranch}.zip", context1);
+                    new Uri($"{repositoryUri}/archive/refs/heads/{repositoryBranch}.zip"), filePath);
 
                 ZipFile.ExtractToDirectory(filePath, directoryPath);
 

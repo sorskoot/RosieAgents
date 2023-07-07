@@ -2,11 +2,11 @@
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.CoreSkills;
 using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel.Text;
 using System.Collections.Specialized;
 using System.Web;
+using Microsoft.SemanticKernel.Skills.Core;
 
 namespace RosieAgents.SkillFunctions;
 
